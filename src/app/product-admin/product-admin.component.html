@@ -1,0 +1,36 @@
+<div class="d-flex flex-column">
+<div class="d-flex flex-row justify-content-between m-3">
+  <input type="search" placeholder="Search" [(ngModel)]="search" (search)="searchTable($event)" (keyup)="searchTable($event)">
+  <button class="btn btn-primary" type="submit" (click)="createProduct()">Create Product</button>
+</div>
+
+  <div class="table-responsive  mt-3"> 
+    <table class="table table-hover ps-1">
+      <thead >
+        <tr>
+          <th scope="col" style="width: 30%;"> Name</th>
+          <th scope="col" style="width:70%;">Description</th>
+          <th scope="col" style="width: 120px;">Price</th>
+          <th scope="col" style="width: 100px;">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="product-table">
+        <tr *ngFor="let product of products; let i = index">
+          <td style="width: 30%;">
+            {{product.title}}
+          </td>
+          <td style="width: 70%;">
+            {{product.description}}
+          </td>
+          <td style="width: 120px;">
+            {{product.price}}
+          </td>
+          <td style="width: 100px;">
+            <fa-icon class="pointer" [icon]="faEdit" (click)="edit(i)"></fa-icon>
+            <fa-icon class="pointer ms-2" [icon]="faTrash" (click)="delete(i)"></fa-icon>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div> 
+</div>
